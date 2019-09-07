@@ -37,10 +37,13 @@ function showLeftTime() {
   var m = this.parseInt((leftTime / 60) % 60); //得到剩余分钟数
   var s = this.parseInt(leftTime % 60); //得到剩余秒数
 
-  leftTimeShow.innerHTML =
-    "限时抢购还剩：" + d + "天 " + h + "时 " + m + "分 " + s + "秒 ";
-
-  setTimeout(showLeftTime, 500);
+  if (leftTime < 0) {
+    leftTimeShow.innerHTML = "限时抢购已结束~";
+  } else {
+    leftTimeShow.innerHTML =
+      "限时抢购还剩：" + d + "天 " + h + "时 " + m + "分 " + s + "秒 ";
+    setTimeout(showLeftTime, 500);
+  }
 }
 // 如果分和秒小于10，修改格式为两位数
 function checkTime(i) {
